@@ -1,4 +1,4 @@
-package com.test.fetch.ui.theme
+package com.test.fetch.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

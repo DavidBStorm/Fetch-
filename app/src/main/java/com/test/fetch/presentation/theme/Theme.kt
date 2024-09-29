@@ -1,4 +1,4 @@
-package com.test.fetch.ui.theme
+package com.test.fetch.presentation.theme
 
 import android.app.Activity
 import android.os.Build
