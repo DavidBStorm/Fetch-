@@ -13,5 +13,5 @@ object AppModules {
 
 
 //@Provides
-//fun provideMediaRepository(bookService: BookService): BookRepository = BookRepository(bookService)
+//fun provideMediaRepository(bookService: repo): Repo = repo(bookService)
 }

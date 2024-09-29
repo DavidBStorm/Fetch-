@@ -1,15 +1,17 @@
 package com.test.fetch.data.services
 
+import com.test.fetch.domain.model.FetchItem
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ListServices {
-    @GET("search.json")
-    suspend fun searchBooks(
-        @Query("title") title: String,
-        @Query("page") page: Int,
-        @Query("limit") limit: Int
-    ): Response<String>
+
+    interface ListServices {
+        @GET("hiring.json")
+        suspend fun getFetchItems(): List<FetchItem>
+    }
+
+
 
 }
