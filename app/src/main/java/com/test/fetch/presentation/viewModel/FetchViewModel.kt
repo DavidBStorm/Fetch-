@@ -16,24 +16,28 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+
 @HiltViewModel
 class FetchViewModel @Inject constructor(
     private val fetchItemsUseCase: FetchItemsUseCase
 ) : ViewModel() {
 
-    // Using PagingSource for paginated data
+    // Pager to handle paging and sorting
     val fetchItemsPaging = Pager(PagingConfig(pageSize = 20)) {
         object : PagingSource<Int, FetchItem>() {
             override suspend fun load(params: LoadParams<Int>): LoadResult<Int, FetchItem> {
                 return try {
-                    val data = fetchItemsUseCase.invoke() // Fetch data via use case
-                        .filter { !it.name.isNullOrBlank() } // Filter out empty names
+                    // Fetch data via use case
+                    val data = fetchItemsUseCase.invoke()
+                        .filter { !it.name.isNullOrBlank() } // Filter blank or null names
+                        .sortedWith(compareBy({ it.listId }, { it.name })) // Sort by listId, then by name
 
-                    // Return the data in a LoadResult.Page format for Paging 3
+                    // Return the sorted, filtered data
                     LoadResult.Page(
                         data = data,
-                        prevKey = null, // No previous key (start of the list)
-                        nextKey = null  // No next key (all data loaded)
+                        prevKey = null, // No previous page
+                        nextKey = null  // No next page (all data loaded)
                     )
                 } catch (e: Exception) {
                     LoadResult.Error(e) // Handle errors
@@ -44,5 +48,6 @@ class FetchViewModel @Inject constructor(
                 return state.anchorPosition
             }
         }
-    }.flow.cachedIn(viewModelScope) // Cache results in ViewModel's scope
+    }.flow.cachedIn(viewModelScope)
 }
+
