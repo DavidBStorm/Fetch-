@@ -79,6 +79,10 @@ dependencies {
     implementation (libs.androidx.paging.runtime.ktx)
     implementation (libs.androidx.paging.compose)
 
+    implementation (libs.androidx.fragment.ktx)
+    implementation (libs.androidx.activity.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
+
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 }
