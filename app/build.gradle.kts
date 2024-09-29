@@ -76,6 +76,9 @@ dependencies {
     implementation(libs.squareup.retrofit2)
     implementation(libs.squareup.retrofit2.converter.gson)
 
+    implementation (libs.androidx.paging.runtime.ktx)
+    implementation (libs.androidx.paging.compose)
+
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 }
