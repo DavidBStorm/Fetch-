@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 
     class FetchRepositoryImpl @Inject constructor(
-        private val listServices: ListServices.ListServices
+        private val listServices: ListServices
     ) : FetchRepository {
         override suspend fun getFetchItems(): List<FetchItem> {
             return listServices.getFetchItems()

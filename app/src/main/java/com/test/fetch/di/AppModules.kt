@@ -19,7 +19,7 @@ object AppModules {
     @Provides
     @Singleton
     fun provideFetchRepository(
-        listServices: ListServices.ListServices
+        listServices: ListServices
     ): FetchRepository = FetchRepositoryImpl(listServices)
 
     @Provides
