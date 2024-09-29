@@ -22,10 +22,9 @@ class MyApplicationModule {
         return context as MyApplication
     }
 
-
     @Provides
     @Singleton
-    fun provideBookService(retrofit: Retrofit): ListServices {
+    fun provideListService(retrofit: Retrofit): ListServices {
         return retrofit.create(ListServices::class.java)
     }
 
